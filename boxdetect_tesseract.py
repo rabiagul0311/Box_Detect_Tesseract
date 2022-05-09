@@ -22,7 +22,7 @@ from pytesseract import Output
 from boxdetect import config
 config = config.PipelinesConfig()
 
-
+#to determine configuration settings
 config.width_range = (40,175)
 config.height_range = (20,90)
 config.scaling_factors = [0.9,0.85,0.99,0.99,0.98,0.97,0.89,0.6,0.5,0.4,0.78,0.80,0.3,0.2,0.1,0.33,0.44,0.22,0.11]
@@ -31,9 +31,11 @@ config.wh_ratio_range = (0.6, 5)
 config.group_size_range = (2, 100)
 #config.horizontal_max_distance_multiplier = 2
 
+#to import libraries
 import numpy
 from boxdetect.pipelines import get_boxes
 
+#to get rectangular bounding boxes of the paper
 image_path = cv2.imread("apo.jpeg")
 rects, grouped_rects, org_image, output_image = get_boxes(image_path, cfg=config, plot=False)
 
@@ -67,9 +69,4 @@ for i in range(len(coord_list)):
 
 
 print(f"{ocr_result_list[15]}  {ocr_result_list[16]}")
-#cv2.imshow("Selected Region of Interest", image_roi) 
-#cv2.waitKey(0) 
-#  
-#
-## closing all open windows 
-#cv2.destroyAllWindows() 
+
